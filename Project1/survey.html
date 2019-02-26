@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Student Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" lang="javascript">
+
+        //Form validation on client-side
+        function ValidateForm() {
+            var txtName = document.getElementById("txtName").value;
+            var studentID = document.getElementById("txtStudentID").value;
+
+            //if name or TUID fields are empty, don't submit
+            if (txtName == "" || studentID == "") {
+                alert("Please enter your name and TUID");
+            }
+
+            //if TUID is invalid, don't submit
+            else if (isNaN(studentID) || studentID.length < 9) {
+                alert("TUID is a 9-digit number");
+            }
+
+            else {
+                // submit the form for server processing
+                document.getElementById("frmStudentFeedback").submit();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <center>
+        <h1>STUDENT FEEDBACK FORM</h1>
+    </center>
+
+    <!--form-->
+    <form id="frmStudentFeedback" method="post" action="./studentfeedback.aspx">
+
+        <!--Student Information (name, ID)-->
+        <fieldset>
+            <legend><b>Student Information</b></legend>
+
+            Name: <input type="text" id="txtName" name="txtName" />
+            &nbsp;&nbsp;
+
+            TUID: <input type="text" id="txtStudentID" name="txtStudentID" maxlength="9" />
+            <br />
+        </fieldset> <!--end of Student Information fieldset-->
+
+        <br />
+
+        <!--Course Selection-->
+        <fieldset>
+            <legend><b>Course Selection</b></legend>
+
+            <!--dropdown-->
+            <select id="courseSelection" name="courseSelection">
+                <option>CIS 3342: Server Side Web Application Development</option>
+                <option>CIS 3329: Network Architectures</option>
+                <option>CIS 3374: Quality Assurance & Testing</option>
+                <option>BA 2104: Excel for Business Applications</option>
+                <option>KINS 1064: Yoga I</option>
+            </select>
+        </fieldset><!--end of Course Selection fieldset-->
+
+        <br>
+
+        <!--12 Questions related to course-->
+        <fieldset name="courseField">
+            <legend><b>Course Evaluation</b></legend>
+
+            <!--questions-->
+            1. The course objectives were clear.
+            <br>
+            <input type="radio" name="q1" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q1" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q1" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q1" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q1" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            2. The course was well organized (e.g. timely access to materials, notification of changes, etc.).
+            <br>
+            <input type="radio" name="q2" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q2" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q2" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q2" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q2" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            3. I participated actively in the course.
+            <br>
+            <input type="radio" name="q3" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q3" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q3" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q3" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q3" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            4. The course was well structured to achieve the learning outcomes (good balance of lectures, tutorials, practice, etc.).
+            <br>
+            <input type="radio" name="q4" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q4" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q4" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q4" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q4" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            5. The learning and teaching methods encouraged participation.
+            <br>
+            <input type="radio" name="q5" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q5" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q5" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q5" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q5" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            6. The overall environment in the class was conducive to learning.
+            <br>
+            <input type="radio" name="q6" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q6" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q6" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q6" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q6" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            7. Recommended reading books were relevant and appropriate.
+            <br>
+            <input type="radio" name="q7" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q7" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q7" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q7" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q7" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            8. The course stimulated my interest and thought on the subject area.
+            <br>
+            <input type="radio" name="q8" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q8" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q8" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q8" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q8" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            9. Ideas and concepts were presented clearly.
+            <br>
+            <input type="radio" name="q9" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q9" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q9" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q9" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q9" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            10. Classrooms were satisfactory.
+            <br>
+            <input type="radio" name="q10" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q10" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q10" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q10" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q10" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            11. I think I have made progress in this course.
+            <br>
+            <input type="radio" name="q11" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q11" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q11" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q11" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q11" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            12. The courseload was manageable.
+            <br>
+            <input type="radio" name="q12" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q12" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q12" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q12" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q12" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+        </fieldset><!--end of Course Questions fieldset-->
+
+        <br />
+
+        <!--8 Questions related to professor-->
+        <fieldset>
+            <legend><b>Instructor Evaluation</b></legend>
+
+            1. Helps students irrespective of ethnicity and culture/background
+            <br>
+            <input type="radio" name="q13" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q13" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q13" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q13" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q13" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            2. Helps students irrespective of gender.
+            <br>
+            <input type="radio" name="q14" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q14" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q14" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q14" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q14" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            3. Blackboard/whiteboard work in terms of legibility, visability, and structure.
+            <br>
+            <input type="radio" name="q15" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q15" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q15" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q15" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q15" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            4. Prepared with material in class.
+            <br>
+            <input type="radio" name="q16" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q16" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q16" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q16" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q16" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            5. Communicated written content and performance steps clearly and effectively.
+            <br>
+            <input type="radio" name="q17" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q17" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q17" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q17" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q17" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            6. Organized the material well in a logical manner and made the class interesting.
+            <br>
+            <input type="radio" name="q18" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q18" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q18" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q18" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q18" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            7. Encouraged questions and class discussion.
+            <br>
+            <input type="radio" name="q19" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q19" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q19" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q19" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q19" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+
+            <br />
+
+            8. Answered questions in an encouraging and polite manner.
+            <br>
+            <input type="radio" name="q20" value="Strongly Disagree"> Strongly Disagree&nbsp;
+            <input type="radio" name="q20" value="Disagree"> Disagree&nbsp;
+            <input type="radio" name="q20" value="Neutral" checked> Neutral&nbsp;
+            <input type="radio" name="q20" value="Agree"> Agree&nbsp;
+            <input type="radio" name="q20" value="Strongly Agree"> Strongly Agree&nbsp;
+            <br>
+        </fieldset> <!--end of Instructor Evalulation fieldset-->
+
+        <center><h2>THANK YOU FOR YOUR TIME!</h2></center>
+
+        <!--Submit Button-->
+        <center><input type="button" class="button button4" id="btnSubmit" value="SUBMIT" onclick="ValidateForm()" PostBackUrl="./studentfeedback.aspx" /></center>
+
+        <br /><br /><br />
+
+    </form><!--end of form-->
+
+    <div id="footer" class="ng-scope">
+        JOSEPH KIM ©2019 | JOSEPHKIM@TEMPLE.EDU
+    </div><!--footer-->
+
+</body>
+</html>
